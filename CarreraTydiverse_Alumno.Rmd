@@ -157,8 +157,7 @@ cran %>% filter(country == "ES",r_version > "3.4.0")
 
 7. Elige aquellas descargas realizadas desde España (ES), o Portugal (PT).
 ```{r}
-
-
+cran %>% filter(country == c("ES","PT"))
 
 ```
 
