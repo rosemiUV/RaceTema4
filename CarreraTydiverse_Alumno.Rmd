@@ -220,7 +220,7 @@ ungroup(by_package)#Se quitan los groups
 
 20. Usa la función `summarise` sobre  el elemento agrupado y calcula  el valor medio de la variable `size`. Observa el efecto del agrupamiento en el resultado.
 ```{r}
-by_package %>% summarise(valor_medio_size = mean(size))
+by_package %>% summarise(avg_size = mean(size))
 #Te da el valor medio por cada paquete
 ```
 21. Para el agrupamiento creado calcula: 
@@ -236,30 +236,12 @@ la mediana (función `stats::median`) de la variable `size` y almacénalos en la
 ```{r}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+pack_sum <- by_package %>% summarise(avg_size = mean(size), 
+                         count = n(), 
+                         unique = n_distinct(ip_id),
+                         countries = n_distinct(country),
+                         med_bytes = median(size))
+pack_sum
 ```
 22. Muestra el 1% de los paquetes que han sido más descargados. Para ello puedes utilizar la función `quantile(????, probs=0.99)`. Siendo ??? la variable de interés, que te permitirá estimar el umbral. Los valores por encima serán los que nos interesen. Almacena estos paquetes **top descargas** en la variable `top_counts`. **NOTA: De ahora en adelante concatena todas las operaciones partiendo del elemento `cran`, usando _pipes_**.
 ```{r}
