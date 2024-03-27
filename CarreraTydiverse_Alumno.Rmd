@@ -182,6 +182,8 @@ cran2 %>% arrange(country,desc(r_version),ip_id)
 en este orden y almacénalas en `cran3`.
 ```{r}
 
+cran3 <- cran%>% select(ip_id,package,size)
+
 
 ```
 
